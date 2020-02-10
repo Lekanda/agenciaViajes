@@ -1,0 +1,31 @@
+{
+  "name": "proyecto-express",
+  "version": "1.0.5",
+  "description": "Curso Node y Express para servidores",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon server",
+    "start": "node server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lekanda/33--Node-Express-Proyecto.git"
+  },
+  "author": "Lekanda-Code 2/20",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Lekanda/33--Node-Express-Proyecto/issues"
+  },
+  "homepage": "https://github.com/Lekanda/33--Node-Express-Proyecto#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mysql2": "^2.1.0",
+    "nodemon": "^2.0.2",
+    "pug": "^2.0.4",
+    "sequelize": "^5.21.3"
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0"
+  }
+}
