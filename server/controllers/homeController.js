@@ -15,7 +15,7 @@ exports.consultasHomepage = async (req, res) => {
         testimoniales
     })
     } catch {
-        console.log('Hubo un error');
+        console.log('Hubo un error home');
         
     } 
 }

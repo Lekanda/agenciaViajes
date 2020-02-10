@@ -8,7 +8,7 @@ exports.mostrarTestimoniales = async (req, res) => {
             testimoniales
         })
     }catch {
-        console.log('Hubo un error');
+        console.log('Hubo un error mostrar Testi');
     }
     
 }
@@ -40,7 +40,7 @@ exports.añadirTestimonial = async (req, res) => {
                 testimoniales
             })
         } catch {
-            console.log('Hubo un error');
+            console.log('Hubo un error errores mayor k');
         }
         
     }else {
@@ -53,7 +53,7 @@ exports.añadirTestimonial = async (req, res) => {
         })
         res.redirect('testimoniales');
         } catch {
-            console.log('hubo un eror');
+            console.log('hubo un error al almacenar');
             
         }
     }

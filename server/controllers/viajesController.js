@@ -8,7 +8,7 @@ exports.mostrarViajes = async (req, res) => {
             viajes
         } );
     } catch {
-        console.log('HUbo un error');
+        console.log('HUbo un error viajes');
         
     }
     
@@ -21,6 +21,6 @@ exports.mostrarViaje = async (req, res) => {
             viaje
         })
     } catch {
-        console.log('HUbo un error');
+        console.log('HUbo un error viaje');
     }
 }
