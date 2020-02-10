@@ -10,7 +10,6 @@ exports.mostrarTestimoniales = async (req, res) => {
     }catch {
         console.log('Hubo un error mostrar Testi');
     }
-    
 }
 
 exports.añadirTestimonial = async (req, res) => {
@@ -29,32 +28,23 @@ exports.añadirTestimonial = async (req, res) => {
     
     // Revisar por errores
     if(errores.length > 0 ) {
-        try {// Muestra la vista con errores
-            const testimoniales = await Testimonial.findAll()
-            res.render('testimoniales', {
-                errores,
-                nombre,
-                correo,
-                mensaje,
-                pagina:'Opiniones',
-                testimoniales
-            })
-        } catch {
-            console.log('Hubo un error errores mayor k');
-        }
-        
+        //Muestra la vista con errores
+         const testimoniales = await Testimonial.findAll()
+         res.render('testimoniales', {
+             errores,
+             nombre,
+             correo,
+             mensaje,
+             pagina:'Opiniones',
+             testimoniales
+         })
     }else {
-        try {
-            // Almacena en la DB
+        // Almacena en la DB
         await Testimonial.create({
             nombre,
             correo,
             mensaje
         })
         res.redirect('testimoniales');
-        } catch {
-            console.log('hubo un error al almacenar');
-            
-        }
     }
 }
