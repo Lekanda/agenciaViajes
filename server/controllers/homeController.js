@@ -21,3 +21,17 @@ exports.consultasHomepage = (req, res) => {
     }))
     .catch(error => console.log((error)))
 }
+
+// exports.consultasHomepage = async (req, res) => {
+    
+//     const viajes = await Viaje.findAll({ limit: 3 });
+//     const testimoniales = await Testimonial.findAll({ limit: 3 });
+
+//     res.render('index', {
+//         pagina: 'Proximos Viajes',
+//         clase: 'home',
+//         viajes,
+//         testimoniales
+//     })
+
+// }
