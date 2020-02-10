@@ -38,7 +38,7 @@ exports.añadirTestimonial = (req, res) => {
         .catch(error => console.log(error))
     }else {
         // Almacena en la DB
-        await Testimonial.create({
+        Testimonial.create({
             nombre,
             correo,
             mensaje
