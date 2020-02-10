@@ -1,15 +1,11 @@
 const Testimonial = require('../models/Testimoniales');
 
 exports.mostrarTestimoniales = async (req, res) => {
-    try {
         const testimoniales = await Testimonial.findAll()
         res.render('testimoniales', {
             pagina: 'Opiniones',
             testimoniales
         })
-    }catch {
-        console.log('Hubo un error mostrar Testi');
-    }
 }
 
 exports.añadirTestimonial = async (req, res) => {
