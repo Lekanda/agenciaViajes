@@ -1,14 +1,15 @@
 const Testimonial = require('../models/Testimoniales');
 
-exports.mostrarTestimoniales = async (req, res) => {
-        const testimoniales = await Testimonial.findAll()
-        res.render('testimoniales', {
+exports.mostrarTestimoniales = (req, res) => {
+    Testimonial.findAll()
+        .then(testimoniales => res.render('testimoniales', {
             pagina: 'Opiniones',
             testimoniales
-        })
+        }))
+        .catch(error => console.log(error))
 }
 
-exports.añadirTestimonial = async (req, res) => {
+exports.añadirTestimonial = (req, res) => {
     //Validar que todos los campos esten llenos
     let {nombre, correo, mensaje} = req.body;
     let errores = [];
@@ -25,15 +26,16 @@ exports.añadirTestimonial = async (req, res) => {
     // Revisar por errores
     if(errores.length > 0 ) {
         //Muestra la vista con errores
-         const testimoniales = await Testimonial.findAll()
-         res.render('testimoniales', {
+        Testimonial.findAll()
+        .then(testimoniales => res.render('testimoniales', {
              errores,
              nombre,
              correo,
              mensaje,
              pagina:'Opiniones',
              testimoniales
-         })
+         }))
+        .catch(error => console.log(error))
     }else {
         // Almacena en la DB
         await Testimonial.create({
@@ -41,6 +43,7 @@ exports.añadirTestimonial = async (req, res) => {
             correo,
             mensaje
         })
-        res.redirect('testimoniales');
+        .then(testimonial => res.redirect('testimoniales'))
+        .catch(error => console.log(error))
     }
 }
