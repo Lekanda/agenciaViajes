@@ -7,7 +7,7 @@ exports.consultasHomepage = (req, res) => {
     promises.push(Viaje.findAll({
          limit: 3 
     }))
-    promises.push(testimonial.findAll({
+    promises.push(Testimonial.findAll({
          limit: 3
     }))
 
@@ -19,6 +19,5 @@ exports.consultasHomepage = (req, res) => {
         viajes: resultado[0],
         testimoniales: resultado[1]
     }))
-    .catch(error => console.log((error))
-    )
+    .catch(error => console.log((error)))
 }
