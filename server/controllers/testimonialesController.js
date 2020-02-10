@@ -1,11 +1,16 @@
 const Testimonial = require('../models/Testimoniales');
 
 exports.mostrarTestimoniales = async (req, res) => {
-    const testimoniales = await Testimonial.findAll()
-    res.render('testimoniales', {
-        pagina: 'Opiniones',
-        testimoniales
+    try {
+        const testimoniales = await Testimonial.findAll()
+        res.render('testimoniales', {
+            pagina: 'Opiniones',
+            testimoniales
         })
+    }catch {
+        console.log('Hubo un error');
+    }
+    
 }
 
 exports.añadirTestimonial = async (req, res) => {
@@ -21,26 +26,35 @@ exports.añadirTestimonial = async (req, res) => {
     if(!mensaje) {
         errores.push({'mensaje' : 'Agrega tu Mensaje'})            
     }
-
+    
     // Revisar por errores
     if(errores.length > 0 ) {
-        // Muestra la vista con errores
-        const testimoniales = await Testimonial.findAll()
-        res.render('testimoniales', {
-            errores,
-            nombre,
-            correo,
-            mensaje,
-            pagina:'Opiniones',
-            testimoniales
-        })
+        try {// Muestra la vista con errores
+            const testimoniales = await Testimonial.findAll()
+            res.render('testimoniales', {
+                errores,
+                nombre,
+                correo,
+                mensaje,
+                pagina:'Opiniones',
+                testimoniales
+            })
+        } catch {
+            console.log('Hubo un error');
+        }
+        
     }else {
-        // Almacena en la DB
+        try {
+            // Almacena en la DB
         await Testimonial.create({
             nombre,
             correo,
             mensaje
         })
-        res.redirect('testimoniales')
+        res.redirect('testimoniales');
+        } catch {
+            console.log('hubo un eror');
+            
+        }
     }
 }
